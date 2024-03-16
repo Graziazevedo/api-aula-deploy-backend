@@ -1,6 +1,8 @@
 require('dotenv').config()
 const express = require('express');
-const knex = require("./conexao")
+const knex = require("./conexao");
+const login = require('./controladores/login');
+
 
 const app = express();
 
@@ -13,10 +15,10 @@ return res.json(carros)
 } catch (error) { 
     console.log(error)
 return res.status(500).json({mensagem: "Erro do servidor"})
-
-}
-
+};
 });
+
+app.post('/login', login)
 
 const port = process.env.PORT || 3000;
 
